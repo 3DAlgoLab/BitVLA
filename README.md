@@ -13,7 +13,7 @@
 
 ## Evaluation on VQA
 
-We use the [LMM-Eval]() toolkit to conduct evaluations on VQA tasks. We provide the [transformers repo]() in which we modify the [modeling_llava.py]() and [modeling_siglip.py]() to support the W1.58-A8 quantization. 
+We use the [LMM-Eval](https://github.com/ustcwhy/BitVLA/tree/main/lmms-eval) toolkit to conduct evaluations on VQA tasks. We provide the [transformers repo](https://github.com/ustcwhy/BitVLA/tree/main/transformers) in which we modify the [modeling_llava.py](https://github.com/ustcwhy/BitVLA/blob/main/transformers/src/transformers/models/llava/modeling_llava.py) and [modeling_siglip.py](https://github.com/ustcwhy/BitVLA/blob/main/transformers/src/transformers/models/siglip/modeling_siglip.py) to support the W1.58-A8 quantization. 
 
 The evaluation should use nvidia_24_07 docker. Install the packages:
 
