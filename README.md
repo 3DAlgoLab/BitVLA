@@ -46,6 +46,20 @@ Note that we provide the master weights of BitVLA and perform online quantizatio
 
 This repository is built using [LMM-Eval](https://github.com/EvolvingLMMs-Lab/lmms-eval) and [the HuggingFace's transformers](https://github.com/huggingface/transformers).
 
+## Citation
+
+If you find this repository useful, please consider citing our work:
+```
+@article{bitvla,
+  title={BitVLA: 1-bit Vision-Language-Action Models for Robotics Manipulation}, 
+  author={Hongyu Wang and Chuyan Xiong and Ruiping Wang and Xilin Chen},
+  year={2025},
+  eprint={2506.07530},
+  archivePrefix={arXiv},
+  primaryClass={cs.RO},
+}
+```
+
 ## License
 This project is licensed under the MIT License.
 
