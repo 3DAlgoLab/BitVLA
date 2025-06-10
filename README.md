@@ -1,7 +1,7 @@
 # BitVLA: 1-bit Vision-Language-Action Models for Robotics Manipulation
-[[paper]]() [[model]](https://huggingface.co/collections/hongyuw/bitvla-68468fb1e3aae15dd8a4e36e) [[code]](https://github.com/ustcwhy/BitVLA)
+[[paper]](https://arxiv.org/abs/2506.07530) [[model]](https://huggingface.co/collections/hongyuw/bitvla-68468fb1e3aae15dd8a4e36e) [[code]](https://github.com/ustcwhy/BitVLA)
 
-- June 2025: [BitVLA: 1-bit Vision-Language-Action Models for Robotics Manipulation]()
+- June 2025: [BitVLA: 1-bit Vision-Language-Action Models for Robotics Manipulation](https://arxiv.org/abs/2506.07530)
 
 
 ## Open Source Plan
