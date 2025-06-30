@@ -119,27 +119,12 @@ First convert the [BitVLA](https://huggingface.co/hongyuw/bitvla-bitsiglipL-224p
 python convert_ckpt.py /path/to/bitvla-bitsiglipL-224px-bf16
 ```
 
-After that, you can finetune the BitVLA using the following command. Here we take LIBERO spatial as an example:
-
+After that, you can finetune BitVLA using the provided shell script.
 ```
-torchrun --standalone --nnodes 1 --nproc-per-node 4 vla-scripts/finetune_bitnet.py \
-  --vla_path /path/to/bitvla-bitsiglipL-224px-bf16 \
-  --data_root_dir /path/to/modified_libero_rlds/ \
-  --dataset_name libero_spatial_no_noops \
-  --run_root_dir /path/to/save/your/ckpt \
-  --use_l1_regression True \
-  --warmup_steps 375 \
-  --use_lora False \
-  --num_images_in_input 2 \
-  --use_proprio True \
-  --batch_size 2 \
-  --grad_accumulation_steps 8 \
-  --learning_rate 1e-4 \
-  --max_steps 10001 \
-  --save_freq 10000 \
-  --save_latest_checkpoint_only False \
-  --image_aug True \
-  --run_id_note your_id
+sh ft_script/ft_bitvla_libero_spatial.sh
+sh ft_script/ft_bitvla_libero_object.sh
+sh ft_script/ft_bitvla_libero_goal.sh
+sh ft_script/ft_bitvla_libero_long.sh
 ```
 
 ### Evaluation on LIBERO
