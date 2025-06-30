@@ -40,6 +40,7 @@
 
 *Note that we provide the master weights of BitVLA and perform online quantization. For actual memory savings, you may quantize the weights offline to 1.58-bit precision. We recommend using the [bitnet.cpp](https://github.com/microsoft/bitnet) inference framework to accurately measure the reduction in inference cost.*
 
+*Due to limited resources, we have not yet pre-trained BitVLA on a large-scale robotics dataset. We are actively working to secure additional compute resources to conduct this pre-training.*
 
 ## Vision-Language
 
