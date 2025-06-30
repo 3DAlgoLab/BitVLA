@@ -120,6 +120,8 @@ class FinetuneConfig:
     use_wandb: bool = True                        # If True, logs to WandB
     # fmt: on
 
+    lr_vit: float = 0.0
+
 
 def remove_ddp_in_checkpoint(state_dict) -> dict:
     """
@@ -638,13 +640,38 @@ def finetune(cfg: FinetuneConfig) -> None:
         )
 
     # Instantiate optimizer
-    trainable_params = [param for param in vla.parameters() if param.requires_grad]
-    if cfg.use_l1_regression:
-        trainable_params += [param for param in action_head.parameters() if param.requires_grad]
-    if cfg.use_proprio:
-        trainable_params += [param for param in proprio_projector.parameters() if param.requires_grad]
-    print(f"# total trainable params: {sum(p.numel() for p in trainable_params)}")
-    optimizer = AdamW(trainable_params, lr=cfg.learning_rate)
+    if cfg.lr_vit > 0:
+        print(f"vit lr: {cfg.lr_vit}")
+        other_params = []
+        vit_params = []
+        for name, param in vla.named_parameters():
+            if not param.requires_grad:
+                continue
+            if "vision_tower." in name:
+                vit_params.append(param)
+            else:
+                other_params.append(param)
+        if cfg.use_l1_regression or cfg.use_diffusion:
+            other_params += [param for param in action_head.parameters() if param.requires_grad]
+        if cfg.use_diffusion:
+            other_params += [param for param in noisy_action_projector.parameters() if param.requires_grad]
+        if cfg.use_proprio:
+            other_params += [param for param in proprio_projector.parameters() if param.requires_grad]
+        print(f"# total trainable params: {sum(p.numel() for p in other_params) + sum(p.numel() for p in other_params)}")
+        optimizer = AdamW([
+            {'params': other_params, 'lr': cfg.learning_rate},
+            {'params': vit_params, 'lr': cfg.lr_vit}
+        ])
+    else:
+        trainable_params = [param for param in vla.parameters() if param.requires_grad]
+        if cfg.use_l1_regression or cfg.use_diffusion:
+            trainable_params += [param for param in action_head.parameters() if param.requires_grad]
+        if cfg.use_diffusion:
+            trainable_params += [param for param in noisy_action_projector.parameters() if param.requires_grad]
+        if cfg.use_proprio:
+            trainable_params += [param for param in proprio_projector.parameters() if param.requires_grad]
+        print(f"# total trainable params: {sum(p.numel() for p in trainable_params)}")
+        optimizer = AdamW(trainable_params, lr=cfg.learning_rate)
 
     # Record original learning rate
     original_lr = optimizer.param_groups[0]["lr"]
