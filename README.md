@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# BitVLA-private
-=======
 # BitVLA: 1-bit Vision-Language-Action Models for Robotics Manipulation
 [[paper]](https://arxiv.org/abs/2506.07530) [[model]](https://huggingface.co/collections/hongyuw/bitvla-68468fb1e3aae15dd8a4e36e) [[code]](https://github.com/ustcwhy/BitVLA)
 
@@ -69,4 +66,3 @@ This project is licensed under the MIT License.
 ### Contact Information
 
 For help or issues using models, please submit a GitHub issue.
->>>>>>> 23b81ffabc40ec530b14c6c08801c09df7d84f92

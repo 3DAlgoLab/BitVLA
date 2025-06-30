@@ -347,6 +347,7 @@ class LlavaForConditionalGeneration(LlavaPreTrainedModel, GenerationMixin):
         cache_position: Optional[torch.LongTensor] = None,
         # logits_to_keep: Union[int, torch.Tensor] = 0,
         image_sizes: torch.Tensor = None,
+        use_bi_attn: Optional[bool] = False,
         **lm_kwargs,
     ) -> Union[Tuple, LlavaCausalLMOutputWithPast]:
         r"""
@@ -441,6 +442,7 @@ class LlavaForConditionalGeneration(LlavaPreTrainedModel, GenerationMixin):
             output_hidden_states=output_hidden_states,
             return_dict=return_dict,
             cache_position=cache_position,
+            use_bi_attn=use_bi_attn,
             # logits_to_keep=logits_to_keep,
             **lm_kwargs,
         )
