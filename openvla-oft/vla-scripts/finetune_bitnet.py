@@ -104,7 +104,7 @@ class FinetuneConfig:
     warmup_steps: int = 375                          # Number of warmup steps for the optimizer
     
     # LoRA
-    use_lora: bool = True                            # If True, uses LoRA fine-tuning
+    use_lora: bool = False                            # If True, uses LoRA fine-tuning
     lora_rank: int = 32                              # Rank of LoRA weight matrix
     lora_dropout: float = 0.0                        # Dropout applied to LoRA weights
     merge_lora_during_training: bool = True          # If True, merges LoRA weights and saves result during training
@@ -651,10 +651,8 @@ def finetune(cfg: FinetuneConfig) -> None:
                 vit_params.append(param)
             else:
                 other_params.append(param)
-        if cfg.use_l1_regression or cfg.use_diffusion:
+        if cfg.use_l1_regression:
             other_params += [param for param in action_head.parameters() if param.requires_grad]
-        if cfg.use_diffusion:
-            other_params += [param for param in noisy_action_projector.parameters() if param.requires_grad]
         if cfg.use_proprio:
             other_params += [param for param in proprio_projector.parameters() if param.requires_grad]
         print(f"# total trainable params: {sum(p.numel() for p in other_params) + sum(p.numel() for p in other_params)}")
@@ -664,10 +662,8 @@ def finetune(cfg: FinetuneConfig) -> None:
         ])
     else:
         trainable_params = [param for param in vla.parameters() if param.requires_grad]
-        if cfg.use_l1_regression or cfg.use_diffusion:
+        if cfg.use_l1_regression:
             trainable_params += [param for param in action_head.parameters() if param.requires_grad]
-        if cfg.use_diffusion:
-            trainable_params += [param for param in noisy_action_projector.parameters() if param.requires_grad]
         if cfg.use_proprio:
             trainable_params += [param for param in proprio_projector.parameters() if param.requires_grad]
         print(f"# total trainable params: {sum(p.numel() for p in trainable_params)}")
