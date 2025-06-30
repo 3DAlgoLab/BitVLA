@@ -114,17 +114,17 @@ git clone git@hf.co:datasets/openvla/modified_libero_rlds
 
 #### 2. OFT fine-tuning
 
-First convert the [BitVLA](https://huggingface.co/hongyuw/bitvla-bitsiglipL-224px-bf16) to a format compatible with the VLA codebase. Remember to change `CKPT_PTH` in convert_ckpt.py
+First convert the [BitVLA](https://huggingface.co/hongyuw/bitvla-bitsiglipL-224px-bf16) to a format compatible with the VLA codebase.
 
 ```
-python convert_ckpt.py
+python convert_ckpt.py /path/to/bitvla-bitsiglipL-224px-bf16
 ```
 
 After that, you can finetune the BitVLA using the following command. Here we take LIBERO spatial as an example:
 
 ```
 torchrun --standalone --nnodes 1 --nproc-per-node 4 vla-scripts/finetune_bitnet.py \
-  --vla_path /path/to/your/vlm/ckpt \
+  --vla_path /path/to/bitvla-bitsiglipL-224px-bf16 \
   --data_root_dir /path/to/modified_libero_rlds/ \
   --dataset_name libero_spatial_no_noops \
   --run_root_dir /path/to/save/your/ckpt \
