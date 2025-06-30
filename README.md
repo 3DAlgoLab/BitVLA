@@ -149,7 +149,7 @@ You can download our fine-tuned BitVLA models from [HuggingFace](https://hugging
 
 ```
 python experiments/robot/libero/run_libero_eval_bitnet.py \
-    --pretrained_checkpoint  /path/to/vla/ckpt \
+    --pretrained_checkpoint  /path/to/ft-bitvla-bitsiglipL-224px-libero_spatial-bf16 \
     --task_suite_name libero_spatial \
     --info_in_path "information you want to show in path" \
     --model_family "bitnet" 
