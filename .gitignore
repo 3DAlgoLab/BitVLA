@@ -155,4 +155,4 @@ wandb/
 logs/
 *.mp4
 ckpt/
-*.sh
+# *.sh
