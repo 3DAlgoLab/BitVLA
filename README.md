@@ -99,7 +99,6 @@ cd openvla-oft/
 # install LIBERO
 git clone https://github.com/Lifelong-Robot-Learning/LIBERO.git
 pip install -e LIBERO/
-# in BitVLA
 pip install -r experiments/robot/libero/libero_requirements.txt
 
 # install bitvla
