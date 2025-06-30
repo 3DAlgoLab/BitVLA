@@ -1,7 +1,8 @@
 import json
 import os
+import sys
 
-CKPT_PTH = "/home/lm2/xcy/BitVLA-private/ckpt/bitvla-bitsiglipL-224px"
+CKPT_PTH = sys.argv[1]
 
 
 # 1. add vocab_size to config.json
