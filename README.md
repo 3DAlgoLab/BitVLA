@@ -29,6 +29,19 @@
    
 ## Checkpoints
 
+| **Models**                    | **Size** | **Memory Usage↓** | **LIBERO-Spatial** | **LIBERO-Object** | **LIBERO-Goal** | **LIBERO-Long** | **Avg.** |
+| ----------------------------- | -------- | ----------------- | ----------- | ---------- | -------- | -------- | -------- |
+| *w/ Robotics pre-training*    |          |                   |             |            |          |          |          |
+| OpenVLA          | 7.5B     | 15.1GB (10.79×)   | 84.7        | 88.4       | 79.2     | 53.7     | 76.5     |
+| SpatialVLA    | 4.2B     | 8.5GB (6.07×)     | 88.2        | 89.9       | 78.6     | 55.5     | 78.1     |
+| CoT-VLA          | 8.0B     | 16.2GB (11.57×)   | 87.5        | 91.6       | 87.6     | 69.0     | 81.1     |
+| NORA-Long          | 3.8B     | 7.5GB (5.36×)     | 92.2        | 95.4       | 89.4     | 74.6     | 87.9     |
+| π₀                  | 3.5B     | 7.0GB (5.00×)     | 96.8        | 98.8       | 95.8     | 85.2     | 94.2     |
+| OpenVLA-OFT  | 7.7B     | 15.4GB (11.00×)   | 97.6        | 98.4       | 97.9     | 94.5     | 97.1     |
+| *w/o Robotics pre-training*   |          |                   |             |            |          |          |          |
+| OpenVLA-OFT | 7.7B     | 15.4GB (11.00×)   | 94.3        | 95.2       | 91.7     | 86.5     | 91.9     |
+| **BitVLA**             | 3.0B     | 1.4GB (1.00×)     | 97.4        | 99.6       | 94.4     | 87.6     | 94.8     |
+
 | Model     | Path |
 | -------------- | ----- |
 | BitVLA |   [hongyuw/bitvla-bitsiglipL-224px-bf16](https://huggingface.co/hongyuw/bitvla-bitsiglipL-224px-bf16)    |
