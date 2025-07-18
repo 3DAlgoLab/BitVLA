@@ -85,7 +85,7 @@ def _get_unpad_data(attention_mask):
 class WeightQuant(torch.autograd.Function):
 
     @staticmethod
-    # @torch.compile
+    # @torch.compile # enable fused kernel for faster training
     def forward(ctx, x):
         dtype = x.dtype
         x = x.float()
@@ -101,7 +101,7 @@ class WeightQuant(torch.autograd.Function):
 class ActQuant(torch.autograd.Function):
 
     @staticmethod
-    # @torch.compile
+    # @torch.compile # enable fused kernel for faster training
     def forward(ctx, x):
         dtype = x.dtype
         x = x.float()
